@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $fillable = ['name', 'birthday'];
+    protected $fillable = ['name', 'birthday', 'group_id'];
+    protected $dates = ['birthday'];
 
     public function group()
     {

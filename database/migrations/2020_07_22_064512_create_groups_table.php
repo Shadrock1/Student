@@ -10,7 +10,7 @@ class CreateGroupsTable extends Migration
     public function up()
     {
         Schema::create('groups', function (Blueprint $table) {
-            $table->id()->unique();
+            $table->bigIncrements('id')->unique();
             $table->text('name');
         });
     }

@@ -10,6 +10,6 @@ class Subject extends Model
 
     public function group()
     {
-        return $this->belongsTo('Model\Mark');
+        return $this->belongsTo(Mark::class);
     }
 }

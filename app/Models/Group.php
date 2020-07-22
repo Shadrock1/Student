@@ -10,7 +10,7 @@ class Group extends Model
 
     public function student()
     {
-        return $this->belongsTo('Model\Student');
+        return $this->belongsTo(Student::class);
     }
 
 }

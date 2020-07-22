@@ -10,11 +10,10 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id('id')->unique();
+            $table->bigIncrements('id')->unique();
             $table->text('name');
-            $table->unsignedBigInteger('group_id');
-            $table->foreign('group_id')->references('id')->on('groups');
-            $table->integer('birthday');
+            $table->foreignId('group_id')->constrained()->onDelete('cascade');
+            $table->date('birthday');
         });
     }
 

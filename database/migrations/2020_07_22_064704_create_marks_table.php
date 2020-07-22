@@ -10,11 +10,9 @@ class CreateMarksTable extends Migration
     public function up()
     {
         Schema::create('marks', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->unsignedBigInteger('subject_id');
-            $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->bigIncrements('id');
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');;
+            $table->foreignId('subject_id')->constrained()->onDelete('cascade');;
             $table->integer('mark');
 
         });
