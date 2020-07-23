@@ -11,10 +11,16 @@ class Student extends Model
 
     public function group()
     {
-        return $this->hasOne('Model\Group');
+        return $this->belongsTo(Group::class);
     }
+
+    public  function subjects()
+    {
+        return $this->belongsToMany(Student::class)->withPivot('mark');
+    }
+
     public function mark()
     {
-        return $this->belongsTo('Model\Mark');
+        return $this->belongsToMany(Mark::class);
     }
 }

@@ -8,8 +8,9 @@ class Subject extends Model
 {
     protected $fillable = ['name'];
 
-    public function group()
+
+    public function student()
     {
-        return $this->belongsTo(Mark::class);
+        return $this->belongsToMany(Student::class)->withPivot('mark');
     }
 }
