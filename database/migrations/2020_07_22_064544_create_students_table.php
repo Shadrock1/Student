@@ -11,7 +11,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->text('name');
+            $table->string('name');
             $table->foreignId('group_id')->constrained()->onDelete('cascade');
             $table->date('birthday');
         });
