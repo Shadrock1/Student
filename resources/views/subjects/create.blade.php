@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('main')
-    <h1>Journal</h1>
+    @include('subjects.form')
 @endsection
