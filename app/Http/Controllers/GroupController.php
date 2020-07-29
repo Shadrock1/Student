@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Http\Requests\Group\StoreRequest;
+use App\Http\Requests\Group\UpdateRequest;
 use Illuminate\Http\Request;
 
 
@@ -27,27 +28,34 @@ class GroupController extends Controller
     {
         Group::create($request->validated());
 
-        return redirect()->back();
+        return redirect()->route('groups.index');
     }
 
-    public function show()
+    public function show(Group $group)
     {
+        return view('groups.show', compact('group'));
+    }
+
+    public function edit(Group $group)
+    {
+        return view('groups.edit', compact('group'));
+    }
+
+
+    public function update(UpdateRequest $request, Group $group)
+    {
+       $data = ($request->validated());
+       $group->fill($data);
+       $group->save();
+
+        return redirect()->route('groups.index');
 
     }
 
-    public function edit()
+    public function destroy(Group $group)
     {
+        Group::destroy($group->id);
 
-    }
-
-
-    public function update()
-    {
-
-    }
-
-    public function destroy()
-    {
-
+        return redirect()->route('groups.index');
     }
 }
