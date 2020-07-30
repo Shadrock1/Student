@@ -7,8 +7,7 @@
         </ul>
     </div>
 @endif
-<div class="form-group d-flex justify-content-center">
-    {{ Form::model($group, ['url' => route('groups.store')]) }}
+<div class="form-group">
     {{ Form::label('name', 'Name') }}</br>
     {{ Form::text('name') }}
     {{ Form::submit('Save') }}

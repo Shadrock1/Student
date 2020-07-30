@@ -6,6 +6,7 @@
             <a class="py-2 mx-2 d-none d-md-inline-block" href="/">Home</a>
             <a class="py-2 mx-2 d-none d-md-inline-block" href="/groups">Groups</a>
             <a class="py-2 mx-2 d-none d-md-inline-block" href="/subjects">Subjects</a>
+            <a class="py-2 mx-2 d-none d-md-inline-block" href="/students">Students</a>
         </div>
     </nav>
 </div>

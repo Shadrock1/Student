@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Http\Requests\Group\StoreRequest;
 use App\Http\Requests\Group\UpdateRequest;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 
@@ -33,7 +34,8 @@ class GroupController extends Controller
 
     public function show(Group $group)
     {
-        return view('groups.show', compact('group'));
+        $students = Student::where('group_id', $group->id)->get();
+        return view('groups.show', compact('group', 'students'));
     }
 
     public function edit(Group $group)
@@ -44,9 +46,7 @@ class GroupController extends Controller
 
     public function update(UpdateRequest $request, Group $group)
     {
-       $data = ($request->validated());
-       $group->fill($data);
-       $group->save();
+        $group->update($request->validated());
 
         return redirect()->route('groups.index');
 
@@ -54,7 +54,7 @@ class GroupController extends Controller
 
     public function destroy(Group $group)
     {
-        Group::destroy($group->id);
+        $group->delete();
 
         return redirect()->route('groups.index');
     }
