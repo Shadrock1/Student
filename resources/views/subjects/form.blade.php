@@ -7,10 +7,9 @@
         </ul>
     </div>
 @endif
-<div class="form-group">
-    {{ Form::label('name', 'Name') }}</br>
-    {{ Form::text('name') }}
-    {{ Form::submit('Save') }}
-    {{ Form::close() }}
-</div>
-
+    <div class="form-group">
+        {{ Form::label('name', 'Name') }}<br>
+        {{ Form::text('name') }}<br>
+        {{ Form::submit('Save') }}
+        {{ Form::close() }}
+    </div>

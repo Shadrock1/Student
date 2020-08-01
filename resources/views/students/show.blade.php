@@ -4,10 +4,11 @@
     <div class="container col-8" >
         <div class="blog-post">
             <div class="col-md-8 blog-main p-3">
-                @foreach($students as $student)
+                <h5>{{ $student->name }}</h5>
+                @foreach($subjects as $subject)
                     <table class="table">
                         <tr>
-                            <td><a href="{{route('students.show', $student->id)}}">{{$student->name}}</a></td>
+                            <td>{{ $subject->name }}</td>
                         </tr>
                     </table>
                 @endforeach

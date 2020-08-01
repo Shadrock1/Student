@@ -10,14 +10,13 @@ class StoreRequest extends FormRequest
 
     public function authorize()
     {
-        return false;
+        return true;
     }
-
 
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:3|unique:groups'
         ];
     }
 }

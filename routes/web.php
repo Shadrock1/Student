@@ -17,4 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('', 'GroupController')->name('*', 'group');
+Route::resource('/groups', 'GroupController');
+Route::resource('/subjects', 'SubjectController');
+Route::resource('/students', 'StudentController');
+
