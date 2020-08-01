@@ -36,12 +36,15 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-        return view('students.show', compact('student'));
+        $subjects =$student->subjects;
+
+        return view('students.show', compact('student', 'subjects'));
     }
 
     public function edit(Student $student)
     {
-        $groups =Group::all();
+        $groups = Group::all();
+
         return view('students.edit', compact('groups', 'student'));
     }
 
@@ -60,4 +63,25 @@ class StudentController extends Controller
 
         return redirect()->route('students.index');
     }
+
+    public function markCreate()
+    {
+
+    }
+
+    public function markStore()
+    {
+
+    }
+
+    public function markEdit()
+    {
+
+    }
+
+    public function markUpdate()
+    {
+
+    }
+
 }
