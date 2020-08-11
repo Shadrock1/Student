@@ -64,24 +64,29 @@ class StudentController extends Controller
         return redirect()->route('students.index');
     }
 
-    public function markCreate()
+    public function markCreate(Student $student)
     {
+        $subjects = Subject::all();
 
+        return view('marks.create', compact('student', 'subjects'));
     }
 
-    public function markStore()
+    public function markStore(MarkStoreRequest $request, Student $student)
     {
+       $data = $request->validated();
+       $student->subjects()->attach($data['subject_id'], ['mark' => $data['mark']]);
 
+       return redirect()->route('students.show', $student);
     }
 
-    public function markEdit()
+    public function markEdit(Student $student, Subject $subject, $mark)
     {
-
+        return view('marks.edit', compact('student', 'subject', 'mark'));
     }
 
-    public function markUpdate()
+    public function markUpdate(Student $student, Subject $subject, $mark)
     {
-
+        $student->subjects()->syncWithoutDetaching($mark->subject_id, ['mark' => $mark->mark]);
     }
 
 }

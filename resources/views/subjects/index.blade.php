@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('main')
-
     <div class="container col-8" >
         <div class="blog-post">
             <div class="col-md-8 blog-main p-3">

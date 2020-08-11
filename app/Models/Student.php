@@ -19,6 +19,4 @@ class Student extends Model
         return $this->belongsToMany(Subject::class)
                     ->withPivot('mark');
     }
-
-
 }
