@@ -36,9 +36,11 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
+
+        $group = $student->group;
         $subjects =$student->subjects;
 
-        return view('students.show', compact('student', 'subjects'));
+        return view('students.show', compact('student', 'subjects', 'group'));
     }
 
     public function edit(Student $student)
@@ -79,14 +81,16 @@ class StudentController extends Controller
        return redirect()->route('students.show', $student);
     }
 
-    public function markEdit(Student $student, Subject $subject, $mark)
+    public function markEdit(Student $student, Subject $subject)
     {
-        return view('marks.edit', compact('student', 'subject', 'mark'));
+        return view('marks.edit', compact('student', 'subject'));
     }
 
-    public function markUpdate(Student $student, Subject $subject, $mark)
+    public function markUpdate(Request $request, Student $student, Subject $subject)
     {
-        $student->subjects()->syncWithoutDetaching($mark->subject_id, ['mark' => $mark->mark]);
+        $student->subjects()->syncWithoutDetaching([$subject->id => ['mark' => $request->mark]]);
+
+        return redirect()->route('students.show', $student);
     }
 
 }

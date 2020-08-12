@@ -11,10 +11,13 @@ class CreateStudentSubjectPivotTable extends Migration
     {
         Schema::create('student_subject', function (Blueprint $table) {
             $table->primary(['student_id', 'subject_id']);
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
-            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
-            $table->integer('mark')->nullable();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('subject_id');
 
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+
+            $table->integer('mark')->nullable();
         });
     }
 
